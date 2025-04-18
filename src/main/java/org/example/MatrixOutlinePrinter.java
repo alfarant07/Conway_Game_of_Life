@@ -28,7 +28,7 @@ public class MatrixOutlinePrinter implements MatrixPrinter {
     protected String rowPrinter(Matrix matrix, int row){
         StringBuilder rowContent = new StringBuilder();
         for(int colIter=0;colIter< matrix.colLength();colIter++){
-            rowContent.append(matrix.getData(row,colIter));
+            rowContent.append(' ');
         }
         return rowContent.toString();
             }
