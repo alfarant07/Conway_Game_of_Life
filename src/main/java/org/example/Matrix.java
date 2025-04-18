@@ -1,3 +1,4 @@
+package org.example;
 public class Matrix {
     private int[][] data;
 
@@ -15,16 +16,16 @@ public class Matrix {
     public Matrix(int[][] array){
         if(array ==null ) {
             throw new IllegalArgumentException("Invalid matrix");
-        } else if (rowLength(array)<1 || colLength(array)<1) {
+        } else if (array.length<1 | array[0].length<1) {
             throw new IllegalArgumentException("Invalid matrix size");
         }
         this.data= array;
     }
-    public int rowLength(int[][] matrix){
-        return matrix.length;
+    public int rowLength(){
+        return data.length;
     }
-    public int colLength(int[][] matrix){
-        return matrix[0].length;
+    public int colLength(){
+        return data[0].length;
     }
 
 
