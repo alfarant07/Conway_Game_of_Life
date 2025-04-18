@@ -18,8 +18,18 @@ public class MatrixOutlinePrinter implements MatrixPrinter {
                 } else if (colIter==0 ||colIter== matrixOutlineColLength-1) {
                     matrixOutline[rowIter][colIter]='-'; //conditional for horizontal cells
                 }
+                else{
+                    matrixOutline[rowIter][colIter] = rowPrinter(matrix,rowIter).charAt(colIter);
+                }
             }
         }
         return Arrays.deepToString(matrixOutline); //matrix conversion into a string
     }
-}
+    protected String rowPrinter(Matrix matrix, int row){
+        StringBuilder rowContent = new StringBuilder();
+        for(int colIter=0;colIter< matrix.colLength();colIter++){
+            rowContent.append(matrix.getData(row,colIter));
+        }
+        return rowContent.toString();
+            }
+        }
