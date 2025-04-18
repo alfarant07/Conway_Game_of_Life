@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class MatrixOutlinePrinter implements MatrixPrinter {
 
     public String printMatrix(Matrix matrix) {
@@ -18,6 +20,6 @@ public class MatrixOutlinePrinter implements MatrixPrinter {
                 }
             }
         }
-        return " ";
+        return Arrays.deepToString(matrixOutline);
     }
 }
