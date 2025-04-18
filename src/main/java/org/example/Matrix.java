@@ -2,8 +2,8 @@ package org.example;
 public class Matrix {
     private int[][] data;
 
-    public int[][] getData(){
-        return data;
+    public int getData(int row, int col){
+        return data[row][col];
     }
     public void setData(int[][] matrix){
         this.data = matrix;
