@@ -20,12 +20,12 @@ public class Matrix {
 //        }
 //        this.data= array;
 //    }
-//    public int rowLength(int[][] matrix){
-//        return matrix.length;
-//    }
-//    public int colLength(int[][] matrix){
-//        return matrix[0].length;
-//    }
+    public int rowLength(int[][] matrix){
+        return matrix.length;
+    }
+    public int colLength(int[][] matrix){
+        return matrix[0].length;
+    }
 
 
 
