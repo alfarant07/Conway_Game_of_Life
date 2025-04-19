@@ -29,7 +29,8 @@ public class MatrixOutlinePrinter implements MatrixPrinter {
             for(int j=0;j<matrixOutline[0].length; j++){
                 formattedMatrix.append(matrixOutline[i][j]);
             }
-            formattedMatrix.append("\n");
+            if(i==matrixOutline.length-1)break;
+             formattedMatrix.append("\n");
         }
         return formattedMatrix.toString();
     }
