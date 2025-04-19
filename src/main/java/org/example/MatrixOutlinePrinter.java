@@ -14,16 +14,24 @@ public class MatrixOutlinePrinter implements MatrixPrinter {
                 if((rowIter ==0 || rowIter==matrixOutlineRowLength-1) && (colIter == matrixOutlineColLength-1 || colIter == 0)){
                     matrixOutline[rowIter][colIter] = '+'; //conditional for corner cells
                 } else if (rowIter==0|| rowIter == matrixOutlineRowLength-1) {
-                    matrixOutline[rowIter][colIter] = '|';//conditional for vertical cells
+                    matrixOutline[rowIter][colIter] = '-';//conditional for vertical cells
                 } else if (colIter==0 ||colIter== matrixOutlineColLength-1) {
-                    matrixOutline[rowIter][colIter]='-'; //conditional for horizontal cells
+                    matrixOutline[rowIter][colIter]='|'; //conditional for horizontal cells
                 }
                 else{
-                    matrixOutline[rowIter][colIter] = rowPrinter(matrix,rowIter).charAt(colIter);
+                    matrixOutline[rowIter][colIter] = rowPrinter(matrix,rowIter).charAt(rowIter);
+                    //assigns element to charAt returned string from rowPrinter. Quite verbose possible refactoring needed
                 }
             }
         }
-        return Arrays.deepToString(matrixOutline); //matrix conversion into a string
+        StringBuilder formattedMatrix = new StringBuilder();
+        for(int i =0; i<matrixOutline.length;i++){
+            for(int j=0;j<matrixOutline[0].length; j++){
+                formattedMatrix.append(matrixOutline[i][j]);
+            }
+            formattedMatrix.append("\n");
+        }
+        return formattedMatrix.toString();
     }
     protected String rowPrinter(Matrix matrix, int row){
         StringBuilder rowContent = new StringBuilder();
