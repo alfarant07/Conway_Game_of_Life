@@ -8,7 +8,11 @@ public class Matrix {
     public void setData(int[][] matrix){
         this.data = matrix;
     }
-        public Matrix(int rows, int columns) {
+    public void setData(int row, int col, int value){
+        data[row][col] =value;
+    }
+
+    public Matrix(int rows, int columns) {
         if (rows < 1 || columns < 1) {throw new IllegalArgumentException("Invalid matrix size");}
         this.data = new int[rows][columns]; //initializing data to given construct params
     }
