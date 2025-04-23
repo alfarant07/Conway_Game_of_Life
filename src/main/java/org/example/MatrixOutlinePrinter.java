@@ -18,8 +18,8 @@ public class MatrixOutlinePrinter implements MatrixPrinter {
                 } else if (colIter==0 ||colIter== matrixOutlineColLength-1) {
                     matrixOutline[rowIter][colIter]='|'; //conditional for horizontal cells
                 }
-                else{
-                    matrixOutline[rowIter][colIter] = rowPrinter(matrix,rowIter).charAt(rowIter);
+                else if(rowIter< matrix.rowLength()+1 && colIter<matrix.colLength()+1)  {
+                    matrixOutline[rowIter][colIter] = rowPrinter(matrix,rowIter-1).charAt(colIter-1);
                     //assigns element to charAt returned string from rowPrinter. Quite verbose possible refactoring needed
                 }
             }
