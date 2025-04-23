@@ -1,0 +1,37 @@
+package org.example;
+enum name{
+    Beehive,
+    Boat,
+}
+public class Shape extends Matrix {
+    private name name;
+
+    Shape(name shapeName, int[][] matrix) {
+        super(matrix); // access Matrix constructor
+        for (int i = 0; i < this.rowLength(); i++) {
+            for (int j = 0; j < this.colLength(); j++) {
+                if (this.getData(i, j) != 0 & this.getData(i, j) != 1) {
+                    throw new IllegalArgumentException("Not a valid matrix");
+                }
+            }
+        }
+        this.name = shapeName;
+    }
+
+    public static void main(String[] args) {
+        int[][] behiveMatrix = {{0, 1, 1, 0},
+                {1, 0, 0, 1},
+                {0, 1, 1, 0}};
+        int[][] boatMatrix = {{1, 1, 0},
+                {1, 0, 1},
+                {0,1,0}};
+
+        Shape shapeBee = new Shape(org.example.name.Beehive,behiveMatrix);
+        Shape shapeBoat = new Shape(org.example.name.Beehive,boatMatrix);
+
+        BoolMatrixPrinter boolMatrixPrinter = new BoolMatrixPrinter();
+        System.out.println(boolMatrixPrinter.printMatrix(shapeBee));
+        System.out.println(boolMatrixPrinter.printMatrix(shapeBoat));
+
+    }
+}
