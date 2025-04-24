@@ -1,7 +1,19 @@
 package org.example;
 enum name{
-    Beehive,
-    Boat,
+    Beehive(new int[][]{
+            {0, 1, 1, 0},
+            {1, 0, 0, 1},
+            {0, 1, 1, 0}}
+    ),
+    Boat(new int[][]{
+            {1, 1, 0},
+            {1, 0, 1},
+            {0,1,0}
+    });
+    private final int[][] shapeArray;
+    private name(int[][] shapeArray){
+        this.shapeArray = shapeArray;
+    }
 }
 public class Shape extends Matrix {
     private name name;
