@@ -1,19 +1,7 @@
 package org.example;
 enum name{
-    Beehive(new int[][]{
-            {0, 1, 1, 0},
-            {1, 0, 0, 1},
-            {0, 1, 1, 0}}
-    ),
-    Boat(new int[][]{
-            {1, 1, 0},
-            {1, 0, 1},
-            {0,1,0}
-    });
-    private final int[][] shapeArray;
-    private name(int[][] shapeArray){
-        this.shapeArray = shapeArray;
-    }
+    Beehive,
+    Boat,
 }
 public class Shape extends Matrix {
     private name name;
@@ -39,7 +27,7 @@ public class Shape extends Matrix {
                 {0,1,0}};
 
         Shape shapeBee = new Shape(org.example.name.Beehive,behiveMatrix);
-        Shape shapeBoat = new Shape(org.example.name.Beehive,boatMatrix);
+        Shape shapeBoat = new Shape(org.example.name.Boat,boatMatrix);
 
         BoolMatrixPrinter boolMatrixPrinter = new BoolMatrixPrinter();
         System.out.println(boolMatrixPrinter.printMatrix(shapeBee));
