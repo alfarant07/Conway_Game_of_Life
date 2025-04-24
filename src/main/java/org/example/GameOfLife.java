@@ -16,6 +16,21 @@ public class GameOfLife extends Matrix {
                     }
                 }
 
+    public void step(){
+        int aliveCells =0;
+        int[][] newBoard= new int[this.rowLength()][this.colLength()];
+        for(int rowIter=0; rowIter<this.rowLength();rowIter++){
+            aliveCells =0;
+            for(int colIter=0; colIter<this.colLength();colIter++){
+                for(int neighborRowIter = rowIter-1; neighborRowIter <rowIter+1; neighborRowIter++){
+                    for(int neighborColIter = colIter-1; neighborColIter<colIter+1;neighborColIter++){
+                        if(neighborRowIter<0 || neighborRowIter> this.rowLength() || neighborColIter<0 || neighborColIter>colLength())continue;
+                        aliveCells+=this.getData(neighborRowIter,colIter);
+                    }
+                }
+            }
+        }
+    }
             }
 
 
