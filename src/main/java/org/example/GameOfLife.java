@@ -9,8 +9,8 @@ public class GameOfLife extends Matrix {
         int shapeHeight = shapeName.rowLength();
         int shapeWidth = shapeName.colLength();
         if(shapeHeight>this.rowLength() || shapeWidth>this.colLength())throw new IllegalArgumentException("Shape is too big");
-        for(int rowIter =0;rowIter<this.rowLength();rowIter++){
-            for(int colIter=0; colIter<this.colLength();colIter++){
+        for(int rowIter =0;rowIter<shapeHeight;rowIter++){
+            for(int colIter=0; colIter<shapeWidth;colIter++){
                 this.setData(row+rowIter,colIter+colIter,shapeMatrix[rowIter][colIter]);
                         }
                     }
