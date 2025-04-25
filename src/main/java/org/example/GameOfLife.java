@@ -1,7 +1,7 @@
 package org.example;
 
-public class GameOfLife extends Matrix {
-    public GameOfLife(int rows,int cols){
+public  class GameOfLife extends Matrix {
+    GameOfLife(int rows,int cols){
         super(rows,cols);
     }
     public void addShape(Shape shapeName, int row, int column){
@@ -17,21 +17,74 @@ public class GameOfLife extends Matrix {
                 }
 
     public void step(){
-        int aliveCells =0;
         int[][] newBoard= new int[this.rowLength()][this.colLength()];
-        for(int rowIter=0; rowIter<this.rowLength();rowIter++){
-            aliveCells =0;
-            for(int colIter=0; colIter<this.colLength();colIter++){
-                for(int neighborRowIter = rowIter-1; neighborRowIter <rowIter+1; neighborRowIter++){
-                    for(int neighborColIter = colIter-1; neighborColIter<colIter+1;neighborColIter++){
-                        if(neighborRowIter<0 || neighborRowIter> this.rowLength() || neighborColIter<0 || neighborColIter>colLength())continue;
-                        aliveCells+=this.getData(neighborRowIter,colIter);
+        for(int rowIter=0; rowIter<this.rowLength();rowIter++) {
+            for (int colIter = 0; colIter < this.colLength(); colIter++) {
+                int aliveCells = stepH(this,rowIter,colIter);
+                int currentCell = this.getData(rowIter, colIter);
+                if (currentCell == 1) {
+                    if (aliveCells < 2 || aliveCells > 3) {
+                        newBoard[rowIter][colIter] = 0;
+                    }
+                    if (aliveCells == 2 || aliveCells == 3) {
+                        newBoard[rowIter][colIter] = 1;
+                    }
+                } else {
+                    if (aliveCells == 3) {
+                        newBoard[rowIter][colIter] = 1;
                     }
                 }
             }
+
+
+            }
+
+
+        this.setData(newBoard);
+    }
+    private int stepH(Matrix gameBoard, int row, int col) {
+        int aliveCells = 0;
+        for (int neighborRowIter = row - 1; neighborRowIter < row + 1; neighborRowIter++) {
+            for (int neighborColIter = col - 1; neighborColIter < col + 1; neighborColIter++) {
+                if (neighborRowIter < 0 || neighborRowIter > this.rowLength() || neighborColIter < 0 || neighborColIter > colLength())
+                    continue;
+                if (neighborRowIter == row && neighborColIter == col) continue;
+                aliveCells += gameBoard.getData(neighborRowIter, col);
+
+            }
+
+        }
+        return aliveCells;
+    }
+    public static void main(String[] args) {
+        int[][] blinkerMatrix = {{0, 1, 0},
+                {0, 1, 0},
+                {0, 1, 0}};
+        Shape blinker = new Shape(name.Blinker,blinkerMatrix);
+        int[][] gliderMatrix = {{0, 1, 0},
+                {0, 0, 1},
+                {1, 1, 1}};
+        Shape glider = new Shape(name.Blinker,blinkerMatrix);
+        GameOfLife gameBoard = new GameOfLife(5,5);
+        gameBoard.addShape(glider,0,0);
+        BoolMatrixPrinter printedGameBoard = new BoolMatrixPrinter();
+        String boardVisualizer=printedGameBoard.printMatrix(gameBoard);
+        System.out.println( boardVisualizer);
+
+        int i=0;
+        while (i<10){
+            gameBoard.step();
+            System.out.println( boardVisualizer);
+            boardVisualizer=printedGameBoard.printMatrix(gameBoard);
+            i++;
+
         }
     }
-            }
+
+
+}
+
+
 
 
 
