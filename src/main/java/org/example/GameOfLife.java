@@ -11,7 +11,7 @@ public  class GameOfLife extends Matrix {
         if(shapeHeight>this.rowLength() || shapeWidth>this.colLength())throw new IllegalArgumentException("Shape is too big");
         for(int rowIter =0;rowIter<shapeHeight;rowIter++){
             for(int colIter=0; colIter<shapeWidth;colIter++){
-                this.setData(row+rowIter,colIter+colIter,shapeMatrix[rowIter][colIter]);
+                this.setData(rowIter,colIter,shapeMatrix[rowIter][colIter]);
                         }
                     }
                 }
@@ -44,12 +44,12 @@ public  class GameOfLife extends Matrix {
     }
     private int stepH(Matrix gameBoard, int row, int col) {
         int aliveCells = 0;
-        for (int neighborRowIter = row - 1; neighborRowIter < row + 1; neighborRowIter++) {
-            for (int neighborColIter = col - 1; neighborColIter < col + 1; neighborColIter++) {
-                if (neighborRowIter < 0 || neighborRowIter > this.rowLength() || neighborColIter < 0 || neighborColIter > colLength())
+        for (int neighborRowIter = row - 1; neighborRowIter <= row + 1; neighborRowIter++) {
+            for (int neighborColIter = col - 1; neighborColIter <= col + 1; neighborColIter++) {
+                if (neighborRowIter < 0 || neighborRowIter == this.rowLength() || neighborColIter < 0 || neighborColIter == this.colLength())
                     continue;
                 if (neighborRowIter == row && neighborColIter == col) continue;
-                aliveCells += gameBoard.getData(neighborRowIter, col);
+                aliveCells += gameBoard.getData(neighborRowIter, neighborColIter);
 
             }
 
@@ -65,7 +65,7 @@ public  class GameOfLife extends Matrix {
                 {0, 0, 1},
                 {1, 1, 1}};
         Shape glider = new Shape(name.Blinker,blinkerMatrix);
-        GameOfLife gameBoard = new GameOfLife(5,5);
+        GameOfLife gameBoard = new GameOfLife(3,3);
         gameBoard.addShape(glider,0,0);
         BoolMatrixPrinter printedGameBoard = new BoolMatrixPrinter();
         String boardVisualizer=printedGameBoard.printMatrix(gameBoard);
