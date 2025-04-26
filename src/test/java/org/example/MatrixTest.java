@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class MatrixTest {
 
     @Test
-    @Disabled
     void rowLength() {
         Matrix matrix = new Matrix(50000,35);
         assertEquals(50000,matrix.rowLength());
