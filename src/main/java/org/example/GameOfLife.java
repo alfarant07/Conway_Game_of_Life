@@ -11,7 +11,11 @@ public  class GameOfLife extends Matrix {
         if(shapeHeight>this.rowLength() || shapeWidth>this.colLength())throw new IllegalArgumentException("Shape is too big");
         for(int rowIter =0;rowIter<shapeHeight;rowIter++){
             for(int colIter=0; colIter<shapeWidth;colIter++){
-                this.setData(rowIter,colIter,shapeMatrix[rowIter][colIter]);
+                if (rowIter + row >= this.rowLength() || colIter+column>=this.colLength()) {
+                    throw new IllegalArgumentException("Shape is out of bounds");
+                }
+                    this.setData(rowIter + row, colIter + column, shapeMatrix[rowIter][colIter]);
+                
                         }
                     }
                 }
@@ -64,15 +68,17 @@ public  class GameOfLife extends Matrix {
         int[][] gliderMatrix = {{0, 1, 0},
                 {0, 0, 1},
                 {1, 1, 1}};
-        Shape glider = new Shape(name.Blinker,blinkerMatrix);
-        GameOfLife gameBoard = new GameOfLife(3,3);
-        gameBoard.addShape(glider,0,0);
+        Shape glider = new Shape(name.Glider,gliderMatrix);
+
+        GameOfLife gameBoard = new GameOfLife(10,10);
+        gameBoard.addShape(blinker,0,0);
+        //gameBoard.addShape(blinker,20,20);
+
         BoolMatrixPrinter printedGameBoard = new BoolMatrixPrinter();
         String boardVisualizer=printedGameBoard.printMatrix(gameBoard);
-        System.out.println( boardVisualizer);
 
         int i=0;
-        while (i<10){
+        while (i<25){
             gameBoard.step();
             System.out.println( boardVisualizer);
             boardVisualizer=printedGameBoard.printMatrix(gameBoard);
