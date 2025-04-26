@@ -2,6 +2,8 @@ package org.example;
 enum name{
     Beehive,
     Boat,
+    Blinker,
+    Glider
 }
 public class Shape extends Matrix {
     private name name;
