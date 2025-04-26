@@ -15,7 +15,6 @@ public  class GameOfLife extends Matrix {
                     throw new IllegalArgumentException("Shape is out of bounds");
                 }
                     this.setData(rowIter + row, colIter + column, shapeMatrix[rowIter][colIter]);
-                
                         }
                     }
                 }
