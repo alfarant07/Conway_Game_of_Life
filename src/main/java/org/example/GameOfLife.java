@@ -1,9 +1,26 @@
 package org.example;
 
 public  class GameOfLife extends Matrix {
+    /**
+     * Constructing our board by specifically calling the matrix constructor rows,cols as without it would get
+     * no parameterless constructor error
+     * https://stackoverflow.com/questions/7187799/why-default-constructor-is-required-in-a-parent-class-if-it-has-an-argument-ed-c
+     * @param rows
+     * @param cols
+     */
     GameOfLife(int rows,int cols){
         super(rows,cols);
     }
+
+    /**
+     * the following method takes a shapeMatrix and sets the bounds for our iterations.If the height and length of our
+     * shape is too big we throw an exception.We iterate through the length of the shape and begin to fill out our
+     * gameBoard with the values of the shape. If at any point our rowIter+X coordinate or colIter+y coordinate exeeds
+     * the length of the board we through an error. else we continue setting the data
+     * @param shapeName gives a shape object with name and matrix values
+     * @param row y-axis to insert matrix
+     * @param column x-axis to insert matrix
+     */
     public void addShape(Shape shapeName, int row, int column){
         int[][] shapeMatrix = shapeName.getData();
         int shapeHeight = shapeName.rowLength();
@@ -19,6 +36,12 @@ public  class GameOfLife extends Matrix {
                     }
                 }
 
+    /**
+     *initializes a newBoard in order to represent our new board after a step
+     * for every cell on the board we call our helper method to count the amount of alive neighbors a cell has
+     * we then initialize the board based on the conditionals to determine the state of the cell alive or dead
+     * we then set our current board to the new board after checking every cell
+     */
     public void step(){
         int[][] newBoard= new int[this.rowLength()][this.colLength()];
         for(int rowIter=0; rowIter<this.rowLength();rowIter++) {
@@ -38,13 +61,20 @@ public  class GameOfLife extends Matrix {
                     }
                 }
             }
-
-
             }
-
-
         this.setData(newBoard);
     }
+
+    /**
+     * Private helper function that counts the alive cells around the specific cell we are at. If any of the cells are
+     * invalid which is found at the border cells we continue the loop iteration to bypass the invalid cells.if we have
+     * an alive neighbor we add it and after all neighbors have been checked we return alive cells
+     * @param gameBoard pass our gameboard to the helper to access the matrix
+     * @param row y coordinate
+     * @param col x coordinate
+     * given both coordinate that is the individual cell that we check for its alive neighbors
+     * @return the amount of alive cells
+     */
     private int stepH(Matrix gameBoard, int row, int col) {
         int aliveCells = 0;
         for (int neighborRowIter = row - 1; neighborRowIter <= row + 1; neighborRowIter++) {
@@ -53,7 +83,6 @@ public  class GameOfLife extends Matrix {
                     continue;
                 if (neighborRowIter == row && neighborColIter == col) continue;
                 aliveCells += gameBoard.getData(neighborRowIter, neighborColIter);
-
             }
 
         }

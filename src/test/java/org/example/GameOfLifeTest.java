@@ -98,6 +98,12 @@ class GameOfLifeTest {
 
 
     @Test
+    /**
+     * probably a lazy implementation but simply calculated where the shape would be and what the glider would look
+     * like utilizing this website
+     * https://playgameoflife.com/
+     *
+     */
     void mainTenStep(){
         int i=0;
         GameOfLife gameBoardExpected = new GameOfLife(10,10);

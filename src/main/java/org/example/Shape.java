@@ -1,4 +1,8 @@
 package org.example;
+
+/**
+ * enum values to represent name of shape
+ */
 enum name{
     Beehive,
     Boat,
@@ -7,12 +11,18 @@ enum name{
 }
 public class Shape extends Matrix {
     private name name;
-
+    private Matrix matrix;
+    /**
+     * The following function assigns a name to our shape and then calls the constructor on our int[][]matrix parameter
+     * giving us a matrix object of our 2 dimmensional array representation
+     * @param shapeName enum value of name
+     * @param matrix a matrix containing our shape in binary
+     */
     Shape(name shapeName, int[][] matrix) {
-        super(matrix); // access Matrix constructor
+        super(matrix); // access Matrix constructor avoids no paramerteless constructor error
         for (int i = 0; i < this.rowLength(); i++) {
             for (int j = 0; j < this.colLength(); j++) {
-                if (this.getData(i, j) != 0 & this.getData(i, j) != 1) {
+                if (this.getData(i, j) != 0 && this.getData(i, j) != 1) {
                     throw new IllegalArgumentException("Not a valid matrix");
                 }
             }
