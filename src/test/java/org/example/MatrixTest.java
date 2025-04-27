@@ -6,6 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MatrixTest {
+    //------------------------------------------------------
+// Assignment (1)
+// Written by: (Anthony Alfaro 2148110)
+// For SES350 Section (602) – Spring 2025
+//The following program is designed to test matrix constructor works correctly and we retrives the right values
+    //for length and height
+//--------------------------------------------------------
 
     @Test
     void rowLength() {

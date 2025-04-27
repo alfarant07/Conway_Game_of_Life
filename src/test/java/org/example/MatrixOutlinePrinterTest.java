@@ -3,7 +3,12 @@ package org.example;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+//------------------------------------------------------
+// Assignment (1)
+// Written by: (Anthony Alfaro 2148110)
+// For SES350 Section (602) – Spring 2025
+//The following program is designed to test print matrix functions to ensure we get the right matrices
+//--------------------------------------------------------
 class MatrixOutlinePrinterTest {
 
     @Test

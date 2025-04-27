@@ -4,7 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+//------------------------------------------------------
+// Assignment (1)
+// Written by: (Anthony Alfaro 2148110)
+// For SES350 Section (602) – Spring 2025
+//The following program is designed to test the GameOfLife board after given steps
+//--------------------------------------------------------
 class GameOfLifeTest {
     private int[][]blinkerMatrix;
     private int[][]gliderMatrix;
