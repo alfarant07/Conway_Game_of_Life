@@ -60,30 +60,33 @@ public  class GameOfLife extends Matrix {
         return aliveCells;
     }
     public static void main(String[] args) {
-        int[][] blinkerMatrix = {{0, 1, 0},
-                {0, 1, 0},
-                {0, 1, 0}};
+        int[][] blinkerMatrix = {{ 1 },
+                {1},
+                {1}};
+
         Shape blinker = new Shape(name.Blinker,blinkerMatrix);
         int[][] gliderMatrix = {{0, 1, 0},
                 {0, 0, 1},
                 {1, 1, 1}};
         Shape glider = new Shape(name.Glider,gliderMatrix);
-
         GameOfLife gameBoard = new GameOfLife(10,10);
-        gameBoard.addShape(blinker,0,0);
-        //gameBoard.addShape(blinker,20,20);
+        gameBoard.addShape(blinker,5,5);
+        gameBoard.addShape(glider,0,0);
+
 
         BoolMatrixPrinter printedGameBoard = new BoolMatrixPrinter();
         String boardVisualizer=printedGameBoard.printMatrix(gameBoard);
-
+        System.out.println(boardVisualizer);
         int i=0;
-        while (i<25){
+        while (true){
             gameBoard.step();
-            System.out.println( boardVisualizer);
             boardVisualizer=printedGameBoard.printMatrix(gameBoard);
+            System.out.println( boardVisualizer);
             i++;
 
         }
+
+
     }
 
 
