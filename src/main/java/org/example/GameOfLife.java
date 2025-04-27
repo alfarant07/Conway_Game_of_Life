@@ -97,20 +97,20 @@ public  class GameOfLife extends Matrix {
         int[][] gliderMatrix = {{0, 1, 0},
                 {0, 0, 1},
                 {1, 1, 1}};
-        Shape glider = new Shape(name.Glider,gliderMatrix);
+        Shape Glider = new Shape(name.Glider,gliderMatrix);
         GameOfLife gameBoard = new GameOfLife(10,10);
         gameBoard.addShape(blinker,5,5);
-        gameBoard.addShape(glider,0,0);
+        gameBoard.addShape(Glider,0,0);
 
 
-        BoolMatrixPrinter printedGameBoard = new BoolMatrixPrinter();
-        String boardVisualizer=printedGameBoard.printMatrix(gameBoard);
-        System.out.println(boardVisualizer);
+        BoolMatrixPrinter PrintedGameBoard = new BoolMatrixPrinter();
+        String BoardVisualizer= PrintedGameBoard.printMatrix(gameBoard);
+        System.out.println(BoardVisualizer);
         int i=0;
         while (true){
             gameBoard.step();
-            boardVisualizer=printedGameBoard.printMatrix(gameBoard);
-            System.out.println( boardVisualizer);
+            BoardVisualizer= PrintedGameBoard.printMatrix(gameBoard);
+            System.out.println( BoardVisualizer);
             i++;
 
         }
