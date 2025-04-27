@@ -12,6 +12,8 @@ class GameOfLifeTest {
     private Shape glider;
     private Shape blinker;
     private Shape blinkerOscilated;
+    private Shape gliderAtOneStep;
+
     private Shape gliderAtTwoSteps;
     private int[][] gliderTwoSteps;
     private GameOfLife gameBoard;
@@ -33,10 +35,41 @@ class GameOfLifeTest {
                 {1,0,1},
                 {0,1,1}
         };
+        int[][] gliderOneStep ={ {1,0,1},
+                {0,1,1},
+                {0,1,0}
+        };
          glider = new Shape(name.Glider,gliderMatrix);
          blinkerOscilated = new Shape(name.Blinker,blinkerMatrixOscilated);
          blinker = new Shape(name.Blinker,blinkerMatrix);
          gliderAtTwoSteps = new Shape(name.Glider,gliderTwoSteps);
+        gliderAtOneStep = new Shape(name.Glider,gliderOneStep);
+
+
+    }
+    @Test
+    void mainStep(){
+        int i=0;
+        GameOfLife gameBoardExpected = new GameOfLife(10,10);
+        GameOfLife gameBoard = new GameOfLife(10,10);
+        gameBoard.addShape(blinker,7,5);
+        gameBoard.addShape(glider,0,0);
+        gameBoardExpected.addShape(gliderAtOneStep,1,0);
+        gameBoardExpected.addShape(blinkerOscilated,7,4);
+        BoolMatrixPrinter printedGameBoard = new BoolMatrixPrinter();
+        String boardVisualizer=printedGameBoard.printMatrix(gameBoard);
+        String boardExpected=printedGameBoard.printMatrix(gameBoardExpected);
+//        System.out.println(boardVisualizer);
+
+        while (i<1){
+            gameBoard.step();
+            boardVisualizer=printedGameBoard.printMatrix(gameBoard);
+            //System.out.println(boardVisualizer);
+            i++;
+        }
+        System.out.println(boardExpected);
+        System.out.println(boardVisualizer);
+        assertArrayEquals(gameBoard.getData(), gameBoardExpected.getData());
 
     }
     @Test
@@ -76,7 +109,7 @@ class GameOfLifeTest {
         BoolMatrixPrinter printedGameBoard = new BoolMatrixPrinter();
         String boardVisualizer=printedGameBoard.printMatrix(gameBoard);
         String boardExpected=printedGameBoard.printMatrix(gameBoardExpected);
-        System.out.println(boardVisualizer);
+//        System.out.println(boardVisualizer);
 
         while (i<10){
             gameBoard.step();
@@ -84,8 +117,8 @@ class GameOfLifeTest {
             //System.out.println(boardVisualizer);
             i++;
         }
-        System.out.println(boardExpected);
-        System.out.println(boardVisualizer);
+//        System.out.println(boardExpected);
+//        System.out.println(boardVisualizer);
         assertArrayEquals(gameBoard.getData(), gameBoardExpected.getData());
 
     }
