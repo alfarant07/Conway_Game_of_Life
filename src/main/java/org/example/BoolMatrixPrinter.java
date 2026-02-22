@@ -1,10 +1,5 @@
 package org.example;
-//------------------------------------------------------
-// Assignment (1)
-// Written by: (Anthony Alfaro 2148110)
-// For SES350 Section (602) – Spring 2025
-//The following program is designed to implement a replica of the game of life
-//--------------------------------------------------------
+
 public class BoolMatrixPrinter extends MatrixOutlinePrinter {
     /**
      * The following implementation of rowPrinter takes a matrix and a row. For each row we iterate through the column

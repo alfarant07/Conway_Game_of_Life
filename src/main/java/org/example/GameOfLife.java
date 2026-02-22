@@ -1,10 +1,4 @@
 package org.example;
-//------------------------------------------------------
-// Assignment (1)
-// Written by: (Anthony Alfaro 2148110)
-// For SES350 Section (602) – Spring 2025
-//The following program is designed to implement a replica of the game of life
-//-------------------------------------------------------
 
 public  class GameOfLife extends Matrix {
     /**
