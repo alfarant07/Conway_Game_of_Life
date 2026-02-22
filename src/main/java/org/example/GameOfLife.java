@@ -1,5 +1,7 @@
 package org.example;
-
+/*
+The purpose of this file is to handle the logic of adding shapes to our board and implementing the step logic
+ */
 public  class GameOfLife extends Matrix {
     /**
      * Constructing our board by specifically calling the matrix constructor rows,cols as without it would get

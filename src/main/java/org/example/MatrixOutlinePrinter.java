@@ -1,6 +1,9 @@
 package org.example;
 
 import java.util.Arrays;
+/*
+The following file is meant to print the outline of our board
+ */
 
 public class MatrixOutlinePrinter implements MatrixPrinter {
     /**

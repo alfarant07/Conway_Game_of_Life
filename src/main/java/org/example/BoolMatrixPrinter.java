@@ -1,5 +1,8 @@
 package org.example;
+/*
 
+The following file is meant to print our boolean matrix which represents our board
+ */
 public class BoolMatrixPrinter extends MatrixOutlinePrinter {
     /**
      * The following implementation of rowPrinter takes a matrix and a row. For each row we iterate through the column

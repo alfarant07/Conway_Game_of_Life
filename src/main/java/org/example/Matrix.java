@@ -1,4 +1,7 @@
 package org.example;
+/*
+Matrix meant to hold our board
+ */
 public class Matrix {
     private int[][] data;
 

@@ -1,7 +1,7 @@
 package org.example;
 
 /**
- * enum values to represent name of shape
+ * enum values to represent name of shape implemented in this class
  */
 
 enum name{
